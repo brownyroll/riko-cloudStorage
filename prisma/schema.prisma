@@ -1,0 +1,109 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+  url = "file:./dev.sql"
+  // url      = env("DATABASE_URL")
+}
+
+model userModel {
+  id         String   @id @default(uuid())
+  fname      String
+  lname      String
+  fullname   String
+  username   String
+  password   String?
+  role       Role     @default(user)
+  createAt   DateTime @default(now())
+  updateAt   DateTime @default(now())
+  googleId   String?  @unique
+  githubId   String?  @unique
+  provider   String?
+  Logs       Logs[]
+  ShortUrls  ShortUrl[]
+  Files      File[]
+}
+
+model ShortUrl {
+  id         String  @id @default(uuid())
+  original   String 
+  shortCode  String   @unique
+  userId     String 
+  user       userModel @relation(fields: [userId], references: [id])
+  createdAt  DateTime @default(now()) 
+  expiresAt  DateTime?
+  visitCount Int      @default(0) 
+}
+
+model File {
+  id         String     @id @default(uuid())
+  userId     String?                             
+  user       userModel? @relation(fields: [userId], references: [id])
+  filename   String
+  mimeType   String
+  url        String
+  size       Int
+  createdAt  DateTime   @default(now())
+  type       FileType   @default(Other)
+  expiresAt  DateTime?
+}
+
+model Logs {
+  id        Int      @id @default(autoincrement())
+  userId    String
+  action    Action
+  actionMsg String?
+  user      userModel @relation(fields: [userId], references: [id])
+  createAt  DateTime @default(now())
+}
+
+
+enum Role {
+  user
+  guest
+  premium
+  friendes
+  family
+  administrator
+}
+
+enum Action {
+  Login
+  Logout
+  Register
+  Create
+  ChangePassword
+  Remove
+  Delete
+  ChangeFile
+  ChangeType
+  Copy
+  Move
+  Fail
+  Success
+  Warning
+  Info
+  Upload
+  Download
+  Update
+  AccessDenied
+  PermissionChanged
+  Read
+}
+
+enum FileType {
+  Image
+  Document
+  Video
+  Audio
+  Other
+}
