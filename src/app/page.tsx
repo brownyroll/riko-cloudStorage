@@ -7,6 +7,8 @@ interface LayoutProps {
   children: React.ReactNode
 }
 
+import { buildMetadata } from '@/lib/metadata';
+export const metadata = buildMetadata('Home');
 
 export default function Home() {
   return (
