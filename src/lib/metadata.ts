@@ -32,7 +32,7 @@ export function buildMetadata(title: string): Metadata {
       siteName: appName,
       images: [
         {
-          url: 'https://riko.brownyrollz.com/og-image/og-image.jpg',
+          url: 'https://riko.brownyrollz.com/og/og-image.jpg',
           width: 1200,
           height: 630,
           alt: appName,
@@ -46,7 +46,7 @@ export function buildMetadata(title: string): Metadata {
       title: fullTitle,
       description: description,
       creator: '@brownyrollz',
-      images: ['https://riko.brownyrollz.in.th/og-image/twitter-image.jpg'],
+      images: ['https://riko.brownyrollz.in.th/og/twitter-image.jpg'],
     },
     metadataBase: new URL('https://riko.brownyrollz.in.th'),
     alternates: {
