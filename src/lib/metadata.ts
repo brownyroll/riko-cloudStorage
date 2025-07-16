@@ -15,8 +15,8 @@ export function buildMetadata(title: string): Metadata {
   return {
     title: fullTitle,
     description: description,
-    keywords: ['cdn', 'cloud', 'shorturl', 'sharelink'],
-    authors: [{ name: 'Brownyrollz', url: 'https://brownyrollz.in.th' }],
+    keywords: ['cdn', 'cloud', 'shorturl', 'sharelink','Brownyrollz','Kittisak Udomsri'],
+    authors: [{ name: 'Brownyrollz Bamz Kittisak Udomsri', url: 'https://brownyrollz.in.th' }],
     creator: 'Bamz Kittisak Udomsri',
     publisher: 'Brownyrollz',
     robots: {
@@ -35,10 +35,10 @@ export function buildMetadata(title: string): Metadata {
           url: 'https://riko.brownyrollz.com/og-image/og-image.jpg',
           width: 1200,
           height: 630,
-          alt: 'OpenGraph Image',
+          alt: appName,
         },
       ],
-      locale: 'en_US',
+      locale: 'th_TH',
       type: 'website',
     },
     twitter: {
