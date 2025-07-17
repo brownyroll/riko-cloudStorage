@@ -32,7 +32,7 @@ export function buildMetadata(title: string): Metadata {
       siteName: appName,
       images: [
         {
-          url: 'https://riko.brownyrollz.com/og/og-image.jpg',
+          url: 'https://riko.brownyrollz.in.th/og/og-image.jpg',
           width: 1200,
           height: 630,
           alt: appName,
